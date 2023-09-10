@@ -23,7 +23,7 @@ const run = async () => {
     const productCollection = db.collection('book');
 
     app.get("/products", async (req, res) => {
-      const cursor = productCollection.find({}).sort({ _id: -1 }); // Assuming you have an _id field
+      const cursor = productCollection.find({}).sort({ _id: -1 }); 
       const products = await cursor.toArray();
 
       res.send({ status: true, data: products });
