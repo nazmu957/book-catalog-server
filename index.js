@@ -47,7 +47,7 @@ const run = async () => {
 
     app.delete('/product/:id', async (req, res) => {
       const id = req.params.id;
-      const result = await productCollection.deleteOne({ _id: ObjectId(id) });// data load in reverse way
+      const result = await productCollection.deleteOne({ _id: ObjectId(id) });
       console.log(result);
       res.send(result);
     });
