@@ -44,6 +44,22 @@ const run = async () => {
       console.log(result);
       res.send(result);
     });
+    //for update data
+    app.put("/product/:id", async (req, res) => {
+      const id = req.params.id;
+      const updatedData = req.body; // Assuming you send the updated data in the request body
+
+      const result = await productCollection.updateOne(
+        { _id: ObjectId(id) }, // Filter for the document to update
+        { $set: updatedData } // The update operation, using $set to update specific fields
+      );
+
+      if (result.matchedCount === 1) {
+        res.status(200).json({ message: "Product updated successfully" });
+      } else {
+        res.status(404).json({ message: "Product not found" });
+      }
+    });
 
     app.delete('/product/:id', async (req, res) => {
       const id = req.params.id;
