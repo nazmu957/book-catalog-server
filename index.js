@@ -47,11 +47,11 @@ const run = async () => {
     //for update data
     app.put("/product/:id", async (req, res) => {
       const id = req.params.id;
-      const updatedData = req.body; // Assuming you send the updated data in the request body
+      const updatedData = req.body; 
 
       const result = await productCollection.updateOne(
-        { _id: ObjectId(id) }, // Filter for the document to update
-        { $set: updatedData } // The update operation, using $set to update specific fields
+        { _id: ObjectId(id) },
+        { $set: updatedData }
       );
 
       if (result.matchedCount === 1) {
